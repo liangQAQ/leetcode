@@ -6,22 +6,21 @@ import entity.ListNode;
  * 输入: 1->2->3->4->5->NULL
  * 输出: 5->4->3->2->1->NULL
  *
- * 遍历取出原链表的每一个节点，放置在新链表的头部
+ * 头插法/尾部递归
  */
 public class 单链表翻转 {
     public static ListNode reverseList(ListNode head) {
         ListNode result = new ListNode(0);
-        ListNode curr = head;
 
-        while(curr!=null){
-            ListNode currSingle = new ListNode(curr.val);
+        while(head!=null){
+            ListNode currSingle = new ListNode(head.val);
             if(result.next==null){
                 result.next = currSingle;
             }else{
                 currSingle.next = result.next;
                 result.next = currSingle;
             }
-            curr = curr.next;
+            head = head.next;
         }
         return result.next;
     }
