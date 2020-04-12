@@ -1,6 +1,6 @@
-package array;
+package node;
 
-import entity.ListNode;
+import node.entity.ListNode;
 
 /**
  * 输入: 1->2->3->4->5->NULL
