@@ -1,6 +1,6 @@
-package node;
+package ListNode;
 
-import node.entity.ListNode;
+import ListNode.entity.ListNode;
 
 /**
  * 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
