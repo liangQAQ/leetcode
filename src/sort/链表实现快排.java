@@ -1,6 +1,7 @@
 package sort;
 
-import node.entity.ListNode;
+
+import ListNode.entity.ListNode;
 
 public class 链表实现快排 {
     public static void main(String[] args) {
