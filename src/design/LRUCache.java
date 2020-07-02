@@ -33,12 +33,14 @@ public class LRUCache {
     }
 
     public void put(String key,String value){
+        if(!map.containsKey(key)){
+            list.add(key);
+        }
+        map.put(key, value);
         if(list.size() == size){
             //移除头节点
             map.remove(list.removeFirst());
         }
-        list.add(key);
-        map.put(key, value);
     }
 
     public String get(String key){
