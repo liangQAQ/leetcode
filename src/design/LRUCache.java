@@ -37,7 +37,7 @@ public class LRUCache {
             list.add(key);
         }
         map.put(key, value);
-        if(list.size() == size){
+        if(list.size() >= size){
             //移除头节点
             map.remove(list.removeFirst());
         }
