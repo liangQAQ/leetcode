@@ -2,6 +2,9 @@ package ListNode;
 
 import ListNode.entity.ListNode;
 
+/**
+ * 利用快慢指针找到中间节点并切割
+ */
 public class 二分法切割合并链表 {
 
     public static void main(String[] args) {
