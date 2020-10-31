@@ -15,4 +15,20 @@ public class ListNode {
         }
         return sb.toString();
     }
+
+    public ListNode setNextNode(ListNode node){
+        ListNode curr = this;
+        curr = this;
+        while(curr.next!=null){
+            curr = curr.next;
+        }
+        curr.next = node;
+        return this;
+    }
+
+    public static void main(String[] args) {
+        ListNode node = new ListNode(4);
+        node.setNextNode(new ListNode(3)).setNextNode(new ListNode(44));
+        System.out.println(node);
+    }
 }
