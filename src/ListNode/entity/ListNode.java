@@ -16,6 +16,7 @@ public class ListNode {
         return sb.toString();
     }
 
+    //方便造数据，正式解的时候不使用
     public ListNode setNextNode(ListNode node){
         ListNode curr = this;
         curr = this;
