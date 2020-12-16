@@ -10,7 +10,7 @@ package sort;
 public class 快速排序 {
 
     public static void main(String[] args) {
-        int[] arr ={5,3,7,6,4,1,0,2,9,10,8};
+        int[] arr ={2,3,7,6,4,1,0,5,9,10,8};
         quickSort(arr);
         for(int i : arr){
             System.out.print(i+",");
