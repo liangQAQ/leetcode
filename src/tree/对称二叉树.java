@@ -13,19 +13,15 @@ public class 对称二叉树 {
     }
 
     private static boolean compareChild(TreeNode left,TreeNode right){
-        if(left!=null && right!=null && hasChild(left) && hasChild(right)){
-            return left.val == right.val && compareChild(left.left,right.right) && compareChild(left.right,right.left);
+        if(left==null && right!=null || left!=null && right==null){
+            return false;
         }else if (left==null && right==null){
             return true;
-        }else if(left==null && right!=null || left!=null && right==null){
-            return false;
+        }else if(left!=null && right!=null ){
+            return left.val == right.val && compareChild(left.left,right.right) && compareChild(left.right,right.left);
         }else{
             return left.val == right.val;
         }
-    }
-
-    private static boolean hasChild(TreeNode root){
-        return root.left!=null || root.right!=null;
     }
 
     public static void main(String[] args) {
