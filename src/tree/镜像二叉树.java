@@ -1,4 +1,4 @@
-package ListNode;
+package tree;
 
 import ListNode.entity.TreeNode;
 
