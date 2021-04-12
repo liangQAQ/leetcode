@@ -40,28 +40,31 @@ public class 重建二叉树 {
         //树的左边数据的中序遍历
         int[] leftArr = Arrays.copyOfRange(inorder, 0, getIndexOfArray(inorder,preorder[0]));
         //树的右边数据的中序遍历
-        int[] rightArr = Arrays.copyOfRange(inorder,getIndexOfArray(inorder,preorder[0]),inorder.length-1);
+        int[] rightArr = Arrays.copyOfRange(inorder,getIndexOfArray(inorder,preorder[0])+1,inorder.length);
 
-        root.left = findRoot(0,preorder,leftArr);
-        root.right = findRoot(0,preorder,rightArr);
+        root.left = findRoot(0,preorder,leftArr,1);
+        root.right = findRoot(0,preorder,rightArr,2);
 
         return root;
     }
 
     //找到根节点
-    public static TreeNode findRoot(int lastRootIndex,int[] preorder,int[] inorder){
+    public static TreeNode findRoot(int lastRootIndex,int[] preorder,int[] inorder,int childCount){
         if(inorder.length==1){
             return new TreeNode(inorder[0]);
         }
-        int rootIndex = 2*lastRootIndex+1;
-        TreeNode root = new TreeNode(preorder[rootIndex]);
+        if(inorder.length==0){
+            return null;
+        }
+        int rootIndex = 2*lastRootIndex+childCount;
+        TreeNode root = new TreeNode(preorder[rootIndex]);//根节点
         //树的左边数据的中序遍历
         int[] leftArr = Arrays.copyOfRange(inorder, 0, getIndexOfArray(inorder,preorder[rootIndex]));
         //树的右边数据的中序遍历
-        int[] rightArr = Arrays.copyOfRange(inorder,getIndexOfArray(inorder,preorder[rootIndex]),inorder.length-1);
+        int[] rightArr = Arrays.copyOfRange(inorder,getIndexOfArray(inorder,preorder[rootIndex])+1,inorder.length);
 
-        root.left = findRoot(rootIndex,preorder,leftArr);
-        root.right = findRoot(rootIndex,preorder,rightArr);
+        root.left = findRoot(rootIndex,preorder,leftArr,1);
+        root.right = findRoot(rootIndex,preorder,rightArr,2);
         return root;
     }
 
