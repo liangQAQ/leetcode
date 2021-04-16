@@ -1,10 +1,8 @@
 package tree;
 
-import ListNode.entity.TreeNode;
+import tree.entity.TreeNode;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * 例如，给出

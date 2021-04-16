@@ -1,6 +1,6 @@
 package tree;
 
-import ListNode.entity.TreeNode;
+import tree.entity.TreeNode;
 
 /**
  * 二叉树的镜像定义：

@@ -1,6 +1,6 @@
 package utils;
 
-import ListNode.entity.TreeNode;
+import tree.entity.TreeNode;
 
 public class TreeUtils {
     public static TreeNode array2TreeNode(Integer[] arr){
