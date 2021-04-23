@@ -16,12 +16,11 @@ package reCall;
  */
 public class 矩阵中的路径 {
     public static boolean exist(char[][] board, String word) {
-        if (word==null||word.length()==0||board.length==0||board[0].length==0){
-            return false;
-        }
         for(int i=0;i<board.length;i++){
             for(int j=0;j<board[0].length;j++){
-                if(help(board,word,i,j,0,i+"-"+j)){
+//                记录走过的路,默认没走过
+                boolean[][] visited = new boolean[board.length][board[0].length];
+                if(help(board,word,i,j,0,visited)){
                     return true;
                 }
             }
@@ -29,37 +28,48 @@ public class 矩阵中的路径 {
         return false;
     }
 
-    public static boolean help(char[][] board, String word,int i,int j,int index,String number) {
-        System.out.println(number+"||||i="+i+",j="+j+" || index="+index);
+    public static boolean help(char[][] board, String word,int i,int j,int index,boolean[][] visited) {
         //边界  剪枝(返回false)
         if( i<0 || j<0 || i>=board.length || j>=board[0].length ){
             return false;
         }
-        if(board[i][j] == '#'){//结束条件
+        //判断走过没有
+        if(visited[i][j]){//结束条件
             return false;
         }
         if(word.charAt(index) == board[i][j]){
+            System.out.println("i:"+i+",j:"+j+"=>now:"+board[i][j]+"=>target:"+word.charAt(index)+"=>index:"+index+"||"+(word.length()-1));
             if(index == word.length()-1){//结束条件
                 return true;
             }
-            System.out.println(number+"=>"+board[i][j]);
             //记录走过的路
-            board[i][j] = '#';
+            visited[i][j] = true;
             //下一步的上下左右四个方向
             index++;
-            return help(board,word,i+1,j,index,number)||help(board,word,i,j+1,index,number)||help(board,word,i-1,j,index,number)||help(board,word,i,j-1,index,number);
+            boolean result = help(board,word,i+1,j,index,visited)||help(board,word,i,j+1,index,visited)||help(board,word,i-1,j,index,visited)||help(board,word,i,j-1,index,visited);
+            //记录走完之后还原
+            visited[i][j] = false;
+            return result;
         }else{
             return false;//错误的路径 剪枝(返回false)
         }
     }
 
     public static void main(String[] args) {
+//        char[][] board = {
+//                {'A','B','C','E'},
+//                {'S','F','C','S'},
+//                {'A','D','E','E'}
+//        };
+//        String word = 'ABCCED';
+//        [['A','B','C','E'],['S','F','E','S'],['A','D','E','E']]
+//        'ABCESEEEFS'
         char[][] board = {
-                {'A','B','C','E'},
-                {'S','F','C','S'},
-                {'A','D','E','E'}
+            {'A','B','C','E'},
+            {'S','F','E','S'},
+            {'A','D','E','E'}
         };
-        String word = "ABCCED";
+        String word = "ABCESEEEFS";
         System.out.println(exist(board,word));
     }
 }
