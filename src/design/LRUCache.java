@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 /**
- * 使用链表LinkedList和HashMap实现缓存lru算法
+ * 使用链表LinkedList和HashMap实现缓存lru算法1
  */
 public class LRUCache {
 
