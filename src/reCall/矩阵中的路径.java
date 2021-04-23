@@ -16,9 +16,12 @@ package reCall;
  */
 public class 矩阵中的路径 {
     public static boolean exist(char[][] board, String word) {
+        if (word==null||word.length()==0||board.length==0||board[0].length==0){
+            return false;
+        }
         for(int i=0;i<board.length;i++){
             for(int j=0;j<board[0].length;j++){
-                if(help(board,word,i,j,0)){
+                if(help(board,word,i,j,0,i+"-"+j)){
                     return true;
                 }
             }
@@ -26,8 +29,8 @@ public class 矩阵中的路径 {
         return false;
     }
 
-    public static boolean help(char[][] board, String word,int i,int j,int index) {
-        System.out.println("i="+i+",j="+j+" || index="+index);
+    public static boolean help(char[][] board, String word,int i,int j,int index,String number) {
+        System.out.println(number+"||||i="+i+",j="+j+" || index="+index);
         //边界  剪枝(返回false)
         if( i<0 || j<0 || i>=board.length || j>=board[0].length ){
             return false;
@@ -39,10 +42,12 @@ public class 矩阵中的路径 {
             if(index == word.length()-1){//结束条件
                 return true;
             }
+            System.out.println(number+"=>"+board[i][j]);
             //记录走过的路
             board[i][j] = '#';
             //下一步的上下左右四个方向
-            return help(board,word,++i,j,++index)||help(board,word,i,++j,++index)||help(board,word,--i,j,++index)||help(board,word,i,--j,++index);
+            index++;
+            return help(board,word,i+1,j,index,number)||help(board,word,i,j+1,index,number)||help(board,word,i-1,j,index,number)||help(board,word,i,j-1,index,number);
         }else{
             return false;//错误的路径 剪枝(返回false)
         }
